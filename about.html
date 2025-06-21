@@ -1,0 +1,490 @@
+.contact-info {
+                flex-direction: column;
+            }
+
+            .contact-item {
+                min-width: auto;
+            }<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Dark Theme</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #000000;
+            color: #808080;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav a {
+            color: #808080;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            text-transform: lowercase;
+            letter-spacing: 1px;
+        }
+
+        .nav a:hover {
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ffffff, #808080);
+            transition: width 0.3s ease;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .nav a[href="#about"] {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        /* Main Sections */
+        .section {
+            min-height: 100vh;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* About Section */
+        .about {
+            text-align: center;
+            padding-top: 80px;
+            justify-content: flex-start;
+            padding-bottom: 0;
+        }
+
+        .about-description {
+            max-width: 600px;
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .about-description.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .name {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-image {
+            width: 85%;
+            max-width: 85vw;
+            height: 50vh;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            border-radius: 0;
+            margin: 0 auto 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23333;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%23666;stop-opacity:0.05"/></linearGradient></defs><rect width="1000" height="600" fill="url(%23g)"/><circle cx="200" cy="150" r="3" fill="%23555" opacity="0.6"/><circle cx="800" cy="100" r="2" fill="%23777" opacity="0.4"/><circle cx="600" cy="400" r="4" fill="%23444" opacity="0.5"/><circle cx="300" cy="500" r="2" fill="%23666" opacity="0.3"/></svg>') center/cover;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-image::after {
+            content: 'PORTFOLIO';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.1);
+            letter-spacing: 8px;
+            pointer-events: none;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #ffffff, #808080);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(128, 128, 128, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card h3 {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Notes Section */
+        .notes {
+            background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+        }
+
+        .notes-container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .note-item {
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid #808080;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            transition: all 0.3s ease;
+        }
+
+        .note-item:hover {
+            border-left-color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #000000;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+
+            .name {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-image {
+                height: 35vh;
+            }
+
+            .hero-image::after {
+                font-size: 2rem;
+                letter-spacing: 4px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(128, 128, 128, 0.1);
+            z-index: 1001;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #ffffff, #808080);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <header class="header">
+        <nav class="nav">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#notes">Notes</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="section about">
+            <h1 class="name">your name</h1>
+            <div class="hero-image"></div>
+            <p style="max-width: 600px; text-align: center; font-size: 1.2rem; margin-top: 2rem;">
+                welcome to my digital space. i'm a creative professional passionate about building exceptional experiences through design and technology.
+            </p>
+        </section>
+
+        <section id="projects" class="section projects">
+            <h2 class="section-title">projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>project alpha</h3>
+                    <p>a revolutionary web application that transforms how users interact with digital content. built with modern technologies and focused on user experience.</p>
+                </div>
+                <div class="project-card">
+                    <h3>project beta</h3>
+                    <p>an innovative mobile solution that bridges the gap between physical and digital experiences through cutting-edge design principles.</p>
+                </div>
+                <div class="project-card">
+                    <h3>project gamma</h3>
+                    <p>a comprehensive platform that empowers businesses to streamline their operations while maintaining aesthetic appeal and functionality.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="notes" class="section notes">
+            <h2 class="section-title">notes</h2>
+            <div class="notes-container">
+                <div class="note-item">
+                    <h3 style="color: #ffffff; margin-bottom: 0.5rem;">design philosophy</h3>
+                    <p>great design is invisible. it seamlessly integrates functionality with beauty, creating experiences that feel natural and effortless.</p>
+                </div>
+                <div class="note-item">
+                    <h3 style="color: #ffffff; margin-bottom: 0.5rem;">development approach</h3>
+                    <p>clean code is not just about functionality—it's about creating maintainable, scalable solutions that stand the test of time.</p>
+                </div>
+                <div class="note-item">
+                    <h3 style="color: #ffffff; margin-bottom: 0.5rem;">creative process</h3>
+                    <p>innovation happens at the intersection of curiosity and discipline. every project is an opportunity to push boundaries.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact">
+            <h2 class="section-title">contact</h2>
+            <div class="contact-container">
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                    let's create something extraordinary together. reach out and let's start a conversation.
+                </p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span>hello@yourname.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>🌐</span>
+                        <span>linkedin.com/in/yourname</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>💼</span>
+                        <span>github.com/yourname</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + '%';
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all project cards and note items
+        document.querySelectorAll('.project-card, .note-item, .contact-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Enhanced navigation highlighting
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
