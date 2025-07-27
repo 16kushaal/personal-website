@@ -1,3 +1,22 @@
+.tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6em 1.2em;
+    border-radius: 50px;
+    background: #222;
+    color: #e0e0e0;
+    font-size: 0.9em;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid #444;
+    margin: 0.3em;
+    transition: all 0.3s ease;
+    user-select: none;
+    text-align: center;
+    white-space: nowrap;
+    min-height: 2.4em;
+}
 * {
     margin: 0;
     padding: 0;
@@ -206,6 +225,7 @@ body {
     backdrop-filter: blur(10px);
     opacity: 0;
     transform: translateY(50px);
+    position: relative;
 }
 
 .project-card.visible {
@@ -222,7 +242,45 @@ body {
 .project-card h3 {
     color: #ffffff;
     font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding-right: 8rem;
+}
+
+.project-year {
+    display: inline-block;
+    color: #808080;
+    font-size: 0.9rem;
     margin-bottom: 1rem;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #808080;
+    text-decoration: none;
+    font-size: 0.85rem;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    backdrop-filter: blur(4px);
+}
+
+.project-link:hover {
+    color: #ffffff;
+    gap: 0.8rem;
+}
+
+.project-link svg {
+    transition: transform 0.3s ease;
+}
+
+.project-link:hover svg {
+    transform: translateX(2px);
 }
 
 /* Notes Section */
@@ -439,4 +497,49 @@ body {
 
 .dark-link:hover {
     color: #ffffff;
+}
+
+.project-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3em 0.6em;
+    border-radius: 50px;
+    background: #222;
+    color: #e0e0e0;
+    font-size: 0.9em;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid #444;
+    margin: 0.3em;
+    transition: all 0.3s ease;
+    user-select: none;
+    text-align: center;
+    white-space: nowrap;
+    min-height: 2.4em;
+    min-width: fit-content;
+}
+
+.tag:hover {
+    background: #444;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.project-card p,
+.project-card ul {
+    margin-left: 0; /* Ensures alignment */
+    padding-left: 0; /* Remove default list indent */
+}
+
+.project-card ul {
+    list-style-position: inside; /* Optional: aligns bullet to text */
 }
