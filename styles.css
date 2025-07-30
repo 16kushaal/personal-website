@@ -481,10 +481,12 @@ body {
     color: #e0e0e0; /* Optional: more specific, applies only to paragraph text */
 }
 
+
 .light-link {
     color: #66b2ff; /* Light blue */
-    text-decoration: underline;
+    text-decoration: none;
     transition: color 0.3s ease;
+    cursor: pointer;
 }
 
 .light-link:hover {
