@@ -286,6 +286,7 @@ body {
 /* Notes Section */
 .notes {
     background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+    padding-top: 6rem;
     justify-content: center;
 }
 
