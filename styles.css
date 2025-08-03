@@ -1,3 +1,76 @@
+/* About Experience & Education Cards */
+.about-cards-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin: 2.5rem 0 1.5rem 0;
+    align-items: flex-start;
+    width: 60%;
+    max-width: 600px;
+    min-width: 260px;
+    margin-left: 20%;
+    margin-right: 0;
+}
+
+.about-card {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(128,128,128,0.13);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 0.7rem 1.5rem 0.7rem 0.7rem;
+    width: 100%;
+    min-width: 220px;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.about-card-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: #222;
+    color: #66b2ff;
+    border-radius: 6px;
+    padding: 0.3em 1.1em;
+    margin-right: 1.1em;
+    min-width: 2.5em;
+    min-height: 2.1em;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+
+.exp-label {
+    background: #222;
+    color: #66b2ff;
+}
+.edu-label {
+    background: #222;
+    color: #ffd966;
+}
+
+.about-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1em;
+}
+.about-card-main {
+    color: #e0e0e0;
+    font-size: 1.08rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.about-card-sub {
+    color: #b0b0b0;
+    font-size: 0.97rem;
+    font-weight: 400;
+    margin-top: 0.1em;
+    letter-spacing: 0.2px;
+}
 .tag {
     display: inline-flex;
     align-items: center;
